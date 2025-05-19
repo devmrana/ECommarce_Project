@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title_block %}{{user.profile.full_name}} | Profile{% endblock title_block %}
+
+{% block body_block %}
+<h2>{{userprofile.full_name}} </h2>
+
+<p>City: {{userprofile.city}}</p>
+<p>Address: {{userprofile.address_1}}</p>
+
+<a href="{% url 'LoginApp:changeprofile' %}">Edit Profile</a>
+{% endblock body_block %}

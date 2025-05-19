@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<div class="container">
+    <h2>Shipping Address > <span class="text-muted">Checkout</span></h2>
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <!-- <div class="card mb-5"> -->
+                <div class="checkout-area">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        
+                        <button class="btn btn-primary" type="submit">Save Address</button>
+                    </form>
+                </div>
+            <!-- </div> -->
+        </div>
+        <div class="col-md-4">
+            <div class="checkout-area">
+                <h5>Order Item</h5>
+                <p class="list-group list-group-flush">
+                    {% for order_item in order_items %}
+                    <li class='list-group-item'>
+                        {{order_item.item.name|title}} X {{order_item.quantity}}
+                    </li>
+                    {% endfor %}
+                </p>
+                <span class="float-left"><b>Order Total</b></span>
+                <span class="float-right"><b><b>&#2547;</b> {{order_total|floatformat:2}}</b></span><br/>
+                <p class="float-right" style="border-top:2px solid #e695d0;text-align:justify;">Total: {{number_to_words|title}} Taka Only.</p><br/>
+            </div><br>
+            <div>
+                {% if saved_address.is_fully_filled %}
+                    <a href="{% url 'Payment:pay' %}" class="btn btn-warning">Make Payment</a>
+                {% else %}
+                <div class="alert alert-info">
+                    <p>Please fill up all the information to make payment.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+</div>
+<br><br>
+
+
+
+
+
+
+
+{% endblock body_block %}
+
+
+
+

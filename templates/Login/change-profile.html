@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %}{{user.profile.full_name}} | Profile{% endblock title_block %}
+
+{% block body_block %}
+<h2>{{user.profile.full_name}} </h2>
+<form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{form|crispy}}
+    <button class='btn btn-sm btn-warning' type="submit">Save</button>
+</form><br><br>
+
+{% endblock body_block %}

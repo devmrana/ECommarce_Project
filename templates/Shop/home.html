@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %}Mini-Shop{% endblock title_block %}
+
+{% block body_block %}
+
+
+<div class="container">
+    {% comment %} <div class="class"> {% endcomment %}
+        <h2 class="my-1">Featured Products</h2><hr>
+        <div class="row">
+            {% for product in object_list %}
+            <div class="col-md-6 col-sm-12 col-lg-3">
+                <figure class="card card-product">
+                    <div class="img-wrap">
+                        <a href="{% url 'Shop:product-detail' pk=product.pk %}" >
+                            <img src="/media/{{product.mainImage}}" alt="" srcset="" style="width: 100%;height:300px;">
+                        </a>
+                    </div>
+                    <figcaption class="info-wrap">
+                        <h6 class="title"><a href="{% url 'Shop:product-detail' pk=product.pk %}" >{{product.name}}</a></h6>
+                        <div class="action-wrap">
+                            <div class="price-wrap h5">
+                                <span class="price-new">Price: &#2547;{{product.price|floatformat:2}}</span>
+                                <span class="price-old">&#2547;<strike>{{product.old_price|floatformat:2}}</strike></span>
+                            </div>
+                        </div>
+                        
+                    </figcaption>
+                </figure>
+            </div>
+            {% endfor %}
+        </div>
+    
+    {% comment %} </div> {% endcomment %}
+</div>
+
+{% endblock body_block %}

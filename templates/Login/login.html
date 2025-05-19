@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %}Login Account{% endblock title_block %}
+
+{% block body_block %}
+
+<div class="row offset-3" style='padding-top:3rem'>
+    <div class="col-8">
+        <h2>Login Account: </h2><hr>
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {{form|crispy}}
+            <button class='btn btn-success' type="submit">Login Account</button>
+        </form><br>
+        <span>Don't have an account? <a href="{% url 'LoginApp:signup' %}">Sign up</a></span>
+    </div>
+</div>
+{% endblock body_block %}

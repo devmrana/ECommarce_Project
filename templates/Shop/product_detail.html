@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="container">
+    <div class="card">
+        <div class="row">
+            <aside class="col-sm-12 col-md-5 col-lg-5 border-right">
+                <article class="gallery-wrap">
+                    <div class="img-big-wrap">
+                        <div class="">
+                            <a href="#"><img src="/media/{{productdetail.mainImage}}" style="width:450px" alt=""></a>
+                        </div>
+                    </div>
+                </article>
+            </aside>
+            <aside class="col-sm-12 col-lg-7 col-md-7">
+                <article class="card-body p-5">
+                    <h3 class="title mp-3">{{productdetail.name|title}}</h3>
+                    <p class="price-detail-wrap">
+                        <span class="price h3 text-warning">
+                            <span class="currency">BDT &#2547;</span><span class="num">{{productdetail.price|floatformat:2}}</span>
+                            <strike style="color:
+                            #7e7e7e" class="num">&#2547;{{productdetail.old_price|floatformat:2}}</strike>
+                        </span>
+                    </p>
+                    <dl class="item-property">
+                        <dt>Description</dt>
+                        <dd>
+                            <p>{{productdetail.details}}</p>
+                        </dd>
+                    </dl>
+                    <a href="{% url 'Order:add' pk=productdetail.pk %}" class="btn btn-lg my-2 btn-outline-primary text-uppercase"><i class="fas fa-shopping-cart"></i>Add to Cart</a>
+                </article>
+            </aside>
+        </div>
+    </div>
+</div>
+
+{% endblock body_block %}
+
+
+

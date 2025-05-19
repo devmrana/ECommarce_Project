@@ -1,0 +1,5 @@
+num2words==0.5.12
+django-crispy-forms==1.14.0
+sslcommerz-python==0.0.7
+Microsoft C++ Build Tools
+https://visualstudio.microsoft.com/visual-cpp-build-tools/
